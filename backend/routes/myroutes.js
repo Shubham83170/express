@@ -1,6 +1,7 @@
+// "Access-Control-allow-Origin"
 const express = require('express');
 const route = express.Router();
-
+const mytype = require('../schimaset/schima');
 
 
 route.get('/',(req,res)=>{
@@ -14,4 +15,11 @@ route.get('/about',(req,res)=>{
 
 
 })
+
+route.get('/getalldata',async(req,res)=>{
+    const alldata = await mytype.find()
+    res.json(alldata);
+    console.log(alldata);
+})
+
 module.exports = route
